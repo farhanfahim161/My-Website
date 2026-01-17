@@ -122,6 +122,18 @@
             transition: all 0.3s;
         }
 
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -1100,6 +1112,15 @@
 
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
         });
 
         // Create particles
